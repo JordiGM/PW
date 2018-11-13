@@ -1,0 +1,3 @@
+ReWriteEngine on
+ReWriteCond $1 !^(index.php|css|js|images|robots.txt)
+ReWriteRule ^(.*)$ /CodeIgniter/index.php/$1 [L]
