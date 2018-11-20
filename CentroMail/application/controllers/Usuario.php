@@ -15,6 +15,10 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 
 
 class Usuario extends CI_Controller {
+    
+    private $Nombre, $correo;
+    
+    
     public function _construct(){
         parent::__construct();
     }
