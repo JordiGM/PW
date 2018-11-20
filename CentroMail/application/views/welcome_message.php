@@ -1,7 +1,10 @@
 <?php
+/**
+ * @author Pablo Piedad Garrido
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="utf-8">
 	<title>Welcome to CodeIgniter</title>
@@ -28,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		color: #444;
 		background-color: transparent;
 		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
+		font-size: 25px;
 		font-weight: normal;
 		margin: 0 0 14px 0;
 		padding: 14px 15px 10px 15px;
@@ -44,6 +47,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		margin: 14px 0 14px 0;
 		padding: 12px 10px 12px 10px;
 	}
+        
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            
+        }
+        
+        li{
+            float:left;
+        }
+        
+        li a{
+            display:block;
+            color:white;
+            text-align:center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li a:hover{
+            background-color:#111;
+        }
 
 	#body {
 		margin: 0 15px 0 15px;
@@ -68,10 +96,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
-
+    <center>
+	<h1>Pagina de inicio</h1>
+    </center>
 	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+            <ul>
+                <li> <a href="<?=base_url().'index.php/Welcome/'?>" title="Inicio">Inicio</a></li>
+                <li><a href="#Buscar">Buscar</a></li>
+                <li style="float:right"><a href="#login">Login</a></li>
+            </ul>
 
 		<p>If you would like to edit this page you'll find it located at:</p>
 		<code>application/views/welcome_message.php</code>
@@ -81,8 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 	</div>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+	
 </div>
 
 </body>
