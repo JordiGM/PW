@@ -24,10 +24,11 @@ class Usuario_model extends CI_Model {
     
     //Metodo que comprueba si el usuario existe o no
     public function verify_user($sUser){
-        $sSql = "SELECT id, Correo, Annio FROM Usuario WHERE Nombre LIKE '%" . $sUser . "%';";
-        $consulta = mysql_query($sSql);
+        $this->db->from('Usuario');
+        $this->db->like('Nombre',$sUser, 'both');
+        $num_rows = $this->db->count_all_results();
         
-        if(mysql_numrows($consulta) == 0){ //el usuario no existe
+        if($num_rows == 0){ //el usuario no existe
             return false;
         }else{ //el usuario existe
             return true;
