@@ -2,7 +2,7 @@
 /**
  * @author Pablo Piedad Garrido
  */
-defined('BASEPATH') OR exit('No direct script access allowed');x
+defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="es">
 <head>
