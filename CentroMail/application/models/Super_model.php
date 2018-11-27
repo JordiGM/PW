@@ -9,7 +9,9 @@ class Super_model extends CI_Model {
     public function _construct(){
         parent::__construct();
     }
-    
+    /**
+     *          Metodos de la tabla Usuario
+     */
     //Metodo que añade un usuario a la base de datos
     public function add_user(){
         $sPass = $this->encrypt->encode(
@@ -137,5 +139,61 @@ class Super_model extends CI_Model {
         $update = $this->db->update('Usuario', $data);
         
         return $update->result_array();
+    }
+    
+    /**
+     *          Metodos de CalificacionesEdad
+     */
+    
+    //Método que devuelve la calificación por edad de un juego
+    public function get_ageCalification ($iIdGame){
+        $this->db->from('CalificacionEdad');
+        $this->db->where('id', $iIdGame);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Metodo que añade una calificación por edad a la base de datos
+    public function add_ageCalification(){
+        $this->db->insert('Usuario', array(
+            //Utilizamos true para evitar inyecciones xss
+            'Nombre'=>$this->input->post('Nombre',TRUE),
+            'Imagen'=>$this->input->post('Imagen',TRUE),
+            'Descripcion'=>$this->input->post('Descripcion',TRUE),
+        ));
+    }
+    
+    //Metodo que modifica el nombre de la calificación por edad
+    public function set_name_ageCalification($iId, $sName){
+        $data = array('Nombre' => $sName);
+        $this->db->where('id', $iId);
+        $update = $this->db->update('CalificacionEdad', $data);
+        
+        return $update->result_array();
+    }
+    
+    //Metodo que modifica el nombre de la calificación por edad
+    public function set_img_ageCalification($iId, $sUrl){
+        $data = array('Imagen' => $sUrl);
+        $this->db->where('id', $iId);
+        $update = $this->db->update('CalificacionEdad', $data);
+        
+        return $update->result_array();
+    }
+    
+    //Metodo que modifica el nombre de la calificación por edad
+    public function set_description_ageCalification($iId, $sDescription){
+        $data = array('Descripcion' => $sDescription);
+        $this->db->where('id', $iId);
+        $update = $this->db->update('CalificacionEdad', $data);
+        
+        return $update->result_array();
+    }
+    
+    //Metodo que elimina la calificación por edad
+    public function remove_ageCalification($iId){
+        $this->db->where('id', $iId);
+        $this->db->delete('CalificacionEdad');
     }
 }
