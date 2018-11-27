@@ -18,13 +18,32 @@ class Usuario extends CI_Controller {
 
     public function _construct(){
         parent::_construct();
-        
-        $this->load->model('Usuario_model');
     }
 
     public function index() { 
-        $datos = array('usuarios' => $this->Usuario_model->get_user_name('') );
-        
-        $this->load->view('usuario_view', $datos);
+        $this->load->view("usuario_view");
     }
+    
+   public function register(){
+       $this->load->view("registro_view");
+   }
+   
+   public function verifyRegister(){
+       
+   }
+   
+   public function verifySession(){
+       if($this->input->post('submit')){
+           $bVar = $this->Super_model->verify_sesion();
+           if($bVar == true){
+               $variables = array('')
+           }
+       }
+   }
+   
+    //$datos = array('usuarios' => $this->Super_model->get_user_name('') );
+        
+      //  $this->load->view('usuario_view', $datos);
+    
+    
 }
