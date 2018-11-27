@@ -1,11 +1,13 @@
-<html>
+<html lang="es">
     <head>
-        <title>Usuario</title>
+        <meta charset="utf-8" />
+        <title>Inicio de sesión</title>
     </head>
     <body>
-        <h1>Bienvenido a la web sobre usuarios</h1>
-        <a href="<?= base_url()?>" title="Indice">Indice feo</a>
-        <p>Estos son los artículos publicados.</p>
+        <p>Estos son los usuarios publicados.</p>
+        <?php foreach($usuarios as $fila): ?>
+        <h2><?=$fila['Correo']; ?></h2></a>
+        <br/>
+        <?php endforeach; ?>
     </body>
 </html>
-
