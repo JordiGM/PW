@@ -58,7 +58,7 @@ class Usuario_model extends CI_Model {
         $this->db->like('Nombre',$sName, 'both');
         $consulta = $this->db->get();
         
-        return $consulta;
+        return $consulta->result_array();
     }
     
     //Metodo que busca a un usuario por su correo
@@ -78,7 +78,7 @@ class Usuario_model extends CI_Model {
         $this->db->where('id',$iIdUser);
         $consulta = $this->db->get();
         
-        return $consulta;
+        return $consulta->result_array();
     }
     
     //Metdodo que devuelve el id de usuario
@@ -98,7 +98,7 @@ class Usuario_model extends CI_Model {
         $this->db->where('id',$iIdUser);
         $consulta = $this->db->get();
         
-        return $consulta;
+        return $consulta->result_array();
     }
     
     //Metodo que modifica el tipo de usuario
@@ -107,7 +107,7 @@ class Usuario_model extends CI_Model {
         $this->db->where('id', $iIdUser);
         $update = $this->db->update('Usuario', $data);
         
-        return $update;
+        return $update->result_array();
     }
     
     //Metodo que modifica el correo electronico del usuario
