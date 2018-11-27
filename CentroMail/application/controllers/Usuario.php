@@ -15,12 +15,16 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 
 
 class Usuario extends CI_Controller {
-    
+
     public function _construct(){
-        parent::__construct();
+        parent::_construct();
+        
+        $this->load->model('Usuario_model');
     }
-    
-    public function index(){
-        $this->load->view('usuario_view');
+
+    public function index() { 
+        $datos = array('usuarios' => $this->Usuario_model->get_user_name('') );
+        
+        $this->load->view('usuario_view', $datos);
     }
 }
