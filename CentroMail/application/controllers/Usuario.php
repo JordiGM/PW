@@ -36,7 +36,12 @@ class Usuario extends CI_Controller {
        if($this->input->post('submit')){
            $bVar = $this->Super_model->verify_sesion();
            if($bVar == true){
-               $variables = array('')
+               $variables = array('usuario' =>$this->input->post('user'));
+               $this->session->set_userdata($variables);
+               redirect(base_url() . 'index.php/CentroMail');
+           } else{
+               $mensaje = array('mensaje' => 'El usuario/contraseña no son correctos');
+               $this->load->view('usuario_view', $mensaje);
            }
        }
    }
