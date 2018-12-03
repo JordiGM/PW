@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Description of Usuario
- *
  * @author Jordi Güeto Matavera
  */
 class Super_model extends CI_Model {
     public function _construct(){
         parent::__construct();
     }
+    
+    
     /**
      *          Metodos de la tabla Usuario
      */
