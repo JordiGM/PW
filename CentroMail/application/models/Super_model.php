@@ -141,6 +141,12 @@ class Super_model extends CI_Model {
         return $update->result_array();
     }
     
+    //Metodo que elimina un usuario
+    public function remove_user($iId){
+        $this->db->where('id', $iId);
+        $this->db->delete('Usuario');
+    }
+    
     
     
     
@@ -163,7 +169,7 @@ class Super_model extends CI_Model {
             //Utilizamos true para evitar inyecciones xss
             'Nombre'=>$this->input->post('Nombre',TRUE),
             'Imagen'=>$this->input->post('Imagen',TRUE),
-            'Descripcion'=>$this->input->post('Descripcion',TRUE),
+            'Descripcion'=>$this->input->post('Descripcion',TRUE)
         ));
     }
     
@@ -216,7 +222,7 @@ class Super_model extends CI_Model {
             //Utilizamos true para evitar inyecciones xss
             'Nombre'=>$this->input->post('Nombre',TRUE),
             'Imagen'=>$this->input->post('Imagen',TRUE),
-            'Descripcion'=>$this->input->post('Descripcion',TRUE),
+            'Descripcion'=>$this->input->post('Descripcion',TRUE)
         ));
     }
     
@@ -268,7 +274,7 @@ class Super_model extends CI_Model {
         $this->db->insert('Genero', array(
             //Utilizamos true para evitar inyecciones xss
             'Nombre'=>$this->input->post('Nombre',TRUE),
-            'Descripcion'=>$this->input->post('Descripcion',TRUE),
+            'Descripcion'=>$this->input->post('Descripcion',TRUE)
         ));
     }
     
@@ -312,7 +318,7 @@ class Super_model extends CI_Model {
     public function add_productora(){
         $this->db->insert('Productora', array(
             //Utilizamos true para evitar inyecciones xss
-            'Nombre'=>$this->input->post('Nombre',TRUE),
+            'Nombre'=>$this->input->post('Nombre',TRUE)
         ));
     }
     
@@ -349,7 +355,7 @@ class Super_model extends CI_Model {
     public function add_compannia(){
         $this->db->insert('Compannia', array(
             //Utilizamos true para evitar inyecciones xss
-            'Nombre'=>$this->input->post('Nombre',TRUE),
+            'Nombre'=>$this->input->post('Nombre',TRUE)
         ));
     }
     
@@ -386,7 +392,7 @@ class Super_model extends CI_Model {
     public function add_plataform(){
         $this->db->insert('Plataforma', array(
             //Utilizamos true para evitar inyecciones xss
-            'Nombre'=>$this->input->post('Nombre',TRUE),
+            'Nombre'=>$this->input->post('Nombre',TRUE)
         ));
     }
     
@@ -401,5 +407,185 @@ class Super_model extends CI_Model {
     public function remove_plataform($iId){
         $this->db->where('id', $iId);
         $this->db->delete('Plataforma');
+    }
+    
+    
+        
+    
+    /**
+     *          Metodos de Juego
+     */
+    
+    //Método que devuelve la información de un juego
+    public function get_juego ($iIdJuego){
+        $this->db->from('Juego');
+        $this->db->where('id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Metodo que añade un juego a la base de datos
+    public function add_juego(){
+        $this->db->insert('Juego', array(
+            //Utilizamos true para evitar inyecciones xss
+            'Titulo'=>$this->input->post('Titulo',TRUE),
+            'Annio'=>$this->input->post('Annio',TRUE),
+            'ValoracionMedia'=>0.0,
+            'Descripcion'=>$this->input->post('Descripcion',TRUE),
+            'Genero'=>$this->input->post('Genero',TRUE),
+            'CalificacionEdad'=>$this->input->post('CalificacionEdad',TRUE),
+            'Productora'=>$this->input->post('Productora',TRUE),
+            'Imagen'=>$this->input->post('Imagen',TRUE)
+        ));
+        
+        $iIdJuego = $this->db->insert_id();
+        
+        $this->db->insert('PlataformaJuego', array(
+            //Utilizamos true para evitar inyecciones xss
+            'Juego_id'=>$iIdJuego,
+            'Plataforma_id'=>$this->input->post('Plataforma',TRUE)
+        ));
+        
+        $this->db->insert('JuegoCalificacionContenido', array(
+            //Utilizamos true para evitar inyecciones xss
+            'Juego_id'=>$iIdJuego,
+            'CalificacionContenido_id'=>$this->input->post('CalificacionContenido',TRUE)
+        ));
+    }
+    
+    //Método que devuelve la información del titulo de juego
+    public function get_titulo_juego ($iIdJuego){
+        $this->db->select('Titulo');
+        $this->db->from('Juego');
+        $this->db->where('id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve la información del año de juego
+    public function get_annio_juego ($iIdJuego){
+        $this->db->select('Annio');
+        $this->db->from('Juego');
+        $this->db->where('id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve la información del valoración media de juego
+    public function get_valoracionMedia_juego ($iIdJuego){
+        $this->db->select('ValoracionMedia');
+        $this->db->from('Juego');
+        $this->db->where('id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve la información de la descripcion de juego
+    public function get_descripcion_juego ($iIdJuego){
+        $this->db->select('Descripcion');
+        $this->db->from('Juego');
+        $this->db->where('id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve la información del genero de juego
+    public function get_genero_juego ($iIdJuego){
+        $this->db->select('Genero');
+        $this->db->from('Juego');
+        $this->db->where('id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve la información de la Calificacion Edad de juego
+    public function get_calificacionEdad_juego ($iIdJuego){
+        $this->db->select('CalificacionEdad');
+        $this->db->from('Juego');
+        $this->db->where('id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve la información de la productora de juego
+    public function get_productora_juego ($iIdJuego){
+        $this->db->select('Productora');
+        $this->db->from('Juego');
+        $this->db->where('id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve la información de la imagen de juego
+    public function get_imagen_juego ($iIdJuego){
+        $this->db->select('Imagen');
+        $this->db->from('Juego');
+        $this->db->where('id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Metodo que modifica el nombre del juego
+    public function set_name_juego($iId, $sName){
+        $data = array('Titulo' => $sName);
+        $this->db->where('id', $iId);
+        $this->db->update('Juego', $data);
+    }
+    
+    //Metodo que modifica el annio del juego
+    public function set_annio_juego($iId, $iAnnio){
+        $data = array('Annio' => $iAnnio);
+        $this->db->where('id', $iId);
+        $this->db->update('Juego', $data);
+    }
+    
+    //Metodo que modifica la descripción del juego
+    public function set_descripcion_juego($iId, $sDescripcion){
+        $data = array('Descripcion' => $sDescripcion);
+        $this->db->where('id', $iId);
+        $this->db->update('Juego', $data);
+    }
+    
+    //Metodo que modifica el genero del juego
+    public function set_genero_juego($iId, $iGenero){
+        $data = array('Genero' => $iGenero);
+        $this->db->where('id', $iId);
+        $this->db->update('Juego', $data);
+    }
+    
+    //Metodo que modifica la calificacion por edad del juego
+    public function set_calificacionEdad_juego($iId, $iCalificacionEdad){
+        $data = array('CalificacionEdad' => $iCalificacionEdad);
+        $this->db->where('id', $iId);
+        $this->db->update('Juego', $data);
+    }
+    
+    //Metodo que modifica la productora del juego
+    public function set_productora_juego($iId, $iProductora){
+        $data = array('Productora' => $iProductora);
+        $this->db->where('id', $iId);
+        $this->db->update('Juego', $data);
+    }
+    
+    //Metodo que modifica la imagen del juego
+    public function set_imagen_juego($iId, $sImagen){
+        $data = array('Imagen' => $sImagen);
+        $this->db->where('id', $iId);
+        $this->db->update('Juego', $data);
+    }
+    
+    //Metodo que elimina el juego
+    public function remove_juego($iId){
+        $this->db->where('id', $iId);
+        $this->db->delete('Juego');
     }
 }
