@@ -13,15 +13,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div align="center" id="container">
-<h1>Pagina de inicio</h1>
-	<div id="body">
-            <ul>
-                <li> <a href="<?=base_url().'index.php/Welcome/'?>" title="Inicio">Inicio</a></li>
-                <li><a href="#Buscar">Buscar</a></li>
-                <li style="float:right"><a href="#login">Login</a></li>
-            </ul>
+    <div id="body">
+        <ul>
+            <li> <a href="<?=base_url().'index.php/Welcome/'?>" title="Inicio">Inicio</a></li>
+            <li><a href="#Buscar">Buscar</a></li>
+            <li style="float:right"><a href="<?=base_url().'index.php/Usuario/'?>">Login</a></li>
+        </ul>
 
-            <p>Bienvenido a la web de CentroMail.<br><br>En ella encontrará valoraciones de videojuegos y comentarios de los usuarios<p>
+        <p>Bienvenido a la web de CentroMail.<br><br>En ella encontrará valoraciones de videojuegos y comentarios de los usuarios<p>
             <center>
                 <h2>VIDEOJUEGOS MÁS VALORADOS SEGÚN NUESTROS USUARIOS</h2>
             </center>

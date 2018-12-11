@@ -4,7 +4,7 @@ class Busqueda_Juego extends CI_Model{
  parent::_construct();
  }
  
- public function busca_nombre($nombtre){
+ public function busca_nombre($nombre){
  $ssql= "select * from Juego where titulo="".$nombre.""order by valoracionMedia";
  $conexion = mysqli_connect("localhost", "root", "", "codeigniter");
  $consulta = mysqli_query($conexion,$ssql);
