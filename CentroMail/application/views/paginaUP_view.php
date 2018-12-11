@@ -8,7 +8,7 @@
     <br>
     
     <?php foreach ($juego as $fila):?>
-    
+   
     <?php print '<a href="CAMBIAR"><img src="$fila->imagen"></a>' ?>
     
     <?php endforeach; ?>
