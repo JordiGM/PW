@@ -667,7 +667,7 @@ class Super_model extends CI_Model {
     }
     
     //Metodo que elimina el nick
-    public function remove_juego($iId){
+    public function remove_nick($iId){
         $this->db->where('id', $iId);
         $this->db->delete('Nick');
     }
