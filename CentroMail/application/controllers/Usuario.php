@@ -29,8 +29,46 @@ class Usuario extends CI_Controller {
    }
    
    public function verifyRegister(){
-       
-   }
+       if($this->input->post('submit_reg')){
+           $this->form_validation->set_rules('Nombre', 'Nombre', 'required');
+           $this->form_validation->set_rules('Correo', 'Correo', 
+                   'required|valid_email|trim');
+           $this->form_validation->set_rules('Usuario', 'Usuario',
+                   'required|trim|callback_verify_user');
+           $this->form_validation->set_rules('Annio', 'Año de nacimiento',
+                   'required|min_length[4]|max_length[4]');//Asi el año de nacimiento solo puede ser un numero de 4 cifras
+           $this->form_validation->set_rules('Contrasennia', 'Contraseña',
+                   'required|trim');
+           $this->form_validation->set_rules('Contrasennia2', 'Repetir contraseña',
+                   'required|trim|matches[Contrasennia]');
+           
+           $this->form_validation->set_message('required', 'El campo %s es obligatorio');
+           $this->form_validation->set_message('valid_email', 'El campo %s es invalido');
+           $this->form_validation->set_message('min_length', 'El campo {field} debe tener al menos {param} caracteres');
+           $this->form_validation->set_message('max_length', 'El campo {field} debe tener como mucho {param} caracteres');
+           $this->form_validation->set_message('verify_user', 'El usuario ya existe');
+           $this->form_validation->set_message('matches', 'El campo %s es distinto que el campo %s');
+           
+           if($this->form_validation->run() == FALSE){
+               $this->register();
+           }
+           else{
+               $this->Super_model->add_user();
+               $datos = array('mensaje' => 'El usuario se ha registrado correctamente');
+               $this->load->view('registro_view', $datos);
+           }
+        }
+    }
+    
+    function verify_user($sName){
+        $var = $this->Super_model->verify_user($sName);
+        if($var == true){
+            return false;
+        }else{
+            return true;
+        }
+        
+    }
    
    public function verifySession(){
        if($this->input->post('submit')){
