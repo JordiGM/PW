@@ -588,4 +588,87 @@ class Super_model extends CI_Model {
         $this->db->where('id', $iId);
         $this->db->delete('Juego');
     }
+    
+    
+        
+    
+    /**
+     *          Metodos de Nick
+     */
+    
+    //Método que devuelve la información de un Nick
+    public function get_nick ($iIdJuego, $iIdUsuario){
+        $this->db->from('Nick');
+        $this->db->where('Juego_id', $iIdJuego);
+        $this->db->where('Usuario_id', $iIdUsuario);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Metodo que añade un nick a la base de datos
+    public function add_nick(){
+        $this->db->insert('Nick', array(
+            //Utilizamos true para evitar inyecciones xss
+            'Nick'=>$this->input->post('Nick',TRUE),
+            'Usuario_id'=>$this->input->post('Usuario',TRUE),
+            'Juego_id'=>$this->input->post('Juego',TRUE)
+        ));
+    }
+    
+    //Método que devuelve el id del nick
+    public function get_nick_id ($iIdJuego, $iIdUsuario){
+        $this->db->select('id');
+        $this->db->from('Nick');
+        $this->db->where('Juego_id', $iIdJuego);
+        $this->db->where('Usuario_id', $iIdUsuario);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve la información de los nicks que tiene un juego
+    public function get_nick_juego ($iIdJuego){
+        $this->db->select('Nick, Usuario_id');
+        $this->db->from('Nick');
+        $this->db->where('Juego_id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve los nicks que tiene un usuario
+    public function get_nick_usuario ($iIdUsuario){
+        $this->db->select('Nick, Juego_id');
+        $this->db->from('Nick');
+        $this->db->where('Usuario_id', $iIdUsuario);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve en que juegos esta un nick
+    //y que usuarios lo utilizan
+    public function get_usuario_juego_nick ($sNick){
+        $this->db->select('Usuario_id, Juego_id');
+        $this->db->from('Nick');
+        $this->db->like('Nick', $sNick);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Metodo que modifica el nick de un juego de un usuario
+    public function set_nick_juego_usuario($iIdUsuario, $iIdJuego, $sNick){
+        $data = array('Nick' => $sNick);
+        $this->db->where('Juego_id', $iIdJuego);
+        $this->db->where('Usuario_id', $iIdUsuario);
+        $this->db->update('Nick', $data);
+    }
+    
+    //Metodo que elimina el nick
+    public function remove_juego($iId){
+        $this->db->where('id', $iId);
+        $this->db->delete('Nick');
+    }
 }
