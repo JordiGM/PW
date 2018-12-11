@@ -14,14 +14,14 @@ class Super_model extends CI_Model {
      */
     //Metodo que añade un usuario a la base de datos
     public function add_user(){
-        $sPass = $this->encrypt->encode(
-                $this->input->post('Contrasennia',TRUE));
+//        $sPass = $this->encrypt->encode(
+//                $this->input->post('Contrasennia',TRUE));
         
         $this->db->insert('Usuario', array(
             //Utilizamos true para evitar inyecciones xss
             'Nombre'=>$this->input->post('Nombre',TRUE),
             'Correo'=>$this->input->post('Correo',TRUE),
-            'Contrasennia'=>$sPass,
+            'Contrasennia'=>$this->input->post('Contrasennia',TRUE),
             'Annio'=>$this->input->post('Annio',TRUE),
             'Tipo'=>$this->input->post('Tipo',TRUE)
         ));
@@ -589,6 +589,16 @@ class Super_model extends CI_Model {
         $this->db->delete('Juego');
     }
     
+    //------ Búsquedas --------
+//    public function buscar_valoracion($fMedia){
+//        $this->db->select('*');
+//        $this->db->from('Juego');
+//        $this->db->where('id', $fMedia);
+//        $consulta = $this->db->get();
+//        
+//        return $consulta->result_array;
+//    }
+    
     
         
     
@@ -652,7 +662,7 @@ class Super_model extends CI_Model {
     public function get_usuario_juego_nick ($sNick){
         $this->db->select('Usuario_id, Juego_id');
         $this->db->from('Nick');
-        $this->db->like('Nick', $sNick);
+        $this->db->like('Nick', $sNick, 'both');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
@@ -670,5 +680,88 @@ class Super_model extends CI_Model {
     public function remove_nick($iId){
         $this->db->where('id', $iId);
         $this->db->delete('Nick');
+    }
+    
+    
+        
+    
+    /**
+     *          Metodos de Valoración
+     */
+    
+    //Método que devuelve la información de una valoración
+    public function get_valoracion ($iIdJuego, $iIdUsuario){
+        $this->db->from('Valoracion');
+        $this->db->where('Juego_id', $iIdJuego);
+        $this->db->where('Usuario_id', $iIdUsuario);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Metodo que añade una valoración a la base de datos
+    public function add_valoracion(){
+        $this->db->insert('Valoracion', array(
+            //Utilizamos true para evitar inyecciones xss
+            'Puntuacion'=>$this->input->post('Puntuacion',TRUE),
+            'Comentario'=>$this->input->post('Comentario',TRUE),
+            'Usuario_id'=>$this->input->post('Usuario',TRUE),
+            'Juego_id'=>$this->input->post('Juego',TRUE)
+        ));
+        
+        //Calcula la media de valoraciones del juego
+        $this->db->select('AVG(Puntuacion) media');
+        $this->db->where('id', $this->input->post('Juego',TRUE));
+        $fValoracionMedia=$this->db->get('Juego')->row();
+        
+        //Actualización de la puntuación media del juego
+        $data = array('ValoracionMedia' => $fValoracionMedia->media);
+        $this->db->where('id', $this->input->post('Juego',TRUE));
+        $this->db->update('Juego', $data);
+    }
+    
+    //Método que devuelve el id de una valoracion
+    public function get_valoracion_id ($iIdJuego, $iIdUsuario){
+        $this->db->select('id');
+        $this->db->from('Valoracion');
+        $this->db->where('Juego_id', $iIdJuego);
+        $this->db->where('Usuario_id', $iIdUsuario);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve la información de las valoraciones que tiene un juego
+    public function get_valoracion_juego ($iIdJuego){
+        $this->db->select('Puntuacion, Comentario, Usuario_id');
+        $this->db->from('Valoracion');
+        $this->db->where('Juego_id', $iIdJuego);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Método que devuelve todas las valoraciones que tiene un usuario
+    public function get_valoracion_usuario ($iIdUsuario){
+        $this->db->select('Puntuacion, Comentario, Juego_id');
+        $this->db->from('Valoracion');
+        $this->db->where('Usuario_id', $iIdUsuario);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
+    //Metodo que modifica la valoración de un juego de un usuario
+    public function set_puntuacion_juego_usuario($iIdUsuario, $iIdJuego, $iPuntuacion, $sComentario){
+        $data = array('Puntuacion' => $iPuntuacion, 'Comentario' => $sComentario);
+        $this->db->where('Juego_id', $iIdJuego);
+        $this->db->where('Usuario_id', $iIdUsuario);
+        $this->db->update('Valoracion', $data);
+    }
+    
+    //Metodo que elimina la valoracion
+    public function remove_valoracion($iId){
+        $this->db->where('id', $iId);
+        $this->db->delete('Valoracion');
     }
 }
