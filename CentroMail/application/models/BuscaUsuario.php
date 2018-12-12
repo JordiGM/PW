@@ -4,12 +4,6 @@ class Busqueda_Usuario extends CI_Model{
  parent::_construct();
  }
  
-// public function busca_nombre($nombtre){
-// $ssql= "select * from Usuario where nombre="".$nombre.";
-// $conexion = mysqli_connect("localhost", "root", "", "codeigniter");
-// $consulta = mysqli_query($conexion,$ssql);
-// return $consulta->result();
-// }
  public function busca_nombre($nombre){
  $ssql= "select * from Usuario where nombre=''.$nombre.";
  $conexion = mysqli_connect("localhost", "root", "", "codeigniter");
