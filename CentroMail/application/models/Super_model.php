@@ -314,6 +314,18 @@ class Super_model extends CI_Model {
         return $consulta->result_array();
     }
     
+    //Metodo que comprueba si la productora existe o no
+    public function verify_productora($sName){
+        $this->db->from('Productora');
+        $this->db->like('Nombre',$sName, 'none');
+        $num_rows = $this->db->count_all_results();
+        
+        if($num_rows == 0){
+            return false;
+        }else{
+            return true; }
+    }
+    
     //Metodo que añade una productora a la base de datos
     public function add_productora(){
         $this->db->insert('Productora', array(
@@ -334,7 +346,6 @@ class Super_model extends CI_Model {
         $this->db->where('id', $iId);
         $this->db->delete('Productora');
     }
-    
     
         
     
@@ -415,6 +426,15 @@ class Super_model extends CI_Model {
     /**
      *          Metodos de Juego
      */
+    
+    //Método que devuelve la información de un juego
+    public function get_juego_title ($sName){
+        $this->db->from('Juego');
+        $this->db->like('Titulo', $sName, 'none');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
     
     //Método que devuelve la información de un juego
     public function get_juego ($iIdJuego){
