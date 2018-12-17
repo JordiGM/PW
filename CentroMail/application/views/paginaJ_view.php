@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> <?php echo $titulo ?> </title>
+	<title> <?php echo $data['Titulo'] ?> </title>
 </head>
 <body>
-    <h1><?php echo $titulo ?></h1>
+
+<?php var_dump ($data);?>
+
+    <h1><?php echo $data['Titulo'] ?></h1>
     <br>
-    <?php print "<img src= $imagen >" ?>
+ <img src= <?php echo $data['Imagen']?> >
     <br>
     <?php foreach ($pegi as $fila):?>
     
-    <?php print "<img src= $fila->pegi >" ?>
+<img src= <?php echo $fila['Pegi']?> >
     
     <?php endforeach; ?>
     <br>
     
     <h2><?php echo "Descripcion: <tab>"?></h2>
-    <p> <?php echo "$descripcion <br>" ?></p>
+    <p> <?php echo "$data['Descripcion']" ?></p><br>
     <h2><?php echo "Valoracion: "?></h2>
-    <p> <?php echo "$valoracion <br>" ?></p>
-    
+    <p> <?php echo "$data['Valoracion']" ?></p><br>
     <?php foreach ($comentario as $fila):?>
     
-    <?php echo $fila->comentario ?>
+    <?php echo $fila['Comentario'] ?>
     
     <?php endforeach; ?>
 </body>

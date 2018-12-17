@@ -6,13 +6,17 @@
 <body>
     <h1><?php echo "Juegos encontrados ordenador por valoracion" ?></h1>
     <br>
-	<?php var_dump($_GET);?>
-    <?php foreach ($_GET as $fila):?>
+	<?php var_dump($data)?>
 	
+    <?php foreach ($data as $fila):?>
+	
+	<?php echo $fila['Titulo']?><br>	
+	
+	
+	<a href="<?=base_url() . 'index.php/InformacionJuego/mostrarJuego/3'?>"</a><img src= <?php echo $fila['Imagen']?> ><br>
 
-    <?php echo "$fila->nombre"?> <br>
-    <?php print '<a href="CAMBIAR"><img src= "$fila->imagen"></a>' ?> <br>
-    
+
+   
     <?php endforeach; ?>
   
 </body>

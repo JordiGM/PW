@@ -63,9 +63,7 @@ class Buscador extends CI_Controller {
 		 }else{
 			 $nombre = $this->input->post('Nombre');
 			 $data= $this->Super_model->get_juego_title($nombre);
-			 
-			 
-			 $this->load->view('JuegosEncontrados_view',$data);
+			 $this-> load->view("JuegosEncontrados_view",compact("data"));
 		}
 	 }
 	 	public function BusquedaJPorEdad(){/*
