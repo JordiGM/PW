@@ -7,7 +7,7 @@
 
 
 
- <?= form_open(base_url().'index.php/formulario/validar',
+ <?= form_open(base_url().'index.php/Buscador/BusquedaJPorNombre',
  array('name'=>'mi_form','id'=>'form'));?>
  <?= form_label('Nombre','Nombre',array('class'=>'label')); ?>
  <?= form_input('Nombre','','class="input"') ?> <br />

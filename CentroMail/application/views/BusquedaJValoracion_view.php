@@ -5,7 +5,7 @@
 </head>
 <body>
 
- <?= form_open(base_url().'index.php/formulario/validar',
+ <?= form_open(base_url().'index.php/Buscador/BusquedaJPorValoracion',
  array('name'=>'mi_form','id'=>'form'));?>
  <?= form_label('Valoracion','Valoracion',array('class'=>'label')); ?>
  <?= form_input('valoracion','','class="input"') ?> <br />

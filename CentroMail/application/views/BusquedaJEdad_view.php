@@ -5,7 +5,7 @@
 </head>
 <body>
 
- <?= form_open(base_url().'index.php/formulario/validar',
+ <?= form_open(base_url().'index.php/Buscador/BusquedaJPorEdad',
  array('name'=>'mi_form','id'=>'form'));?>
  <?= form_label('Edad','Edad',array('class'=>'label')); ?>
  <?= form_input('edad','','class="input"') ?> <br />

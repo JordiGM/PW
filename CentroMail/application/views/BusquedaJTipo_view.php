@@ -5,7 +5,7 @@
 </head>
 <body>
 
- <?= form_open(base_url().'index.php/formulario/validar',
+ <?= form_open(base_url().'index.php/Buscador/BusquedaJPorTipo',
  array('name'=>'mi_form','id'=>'form'));?>
  <?= form_label('Tipo','Tipo',array('class'=>'label')); ?>
  <?= form_input('Tipo','','class="input"') ?> <br />
