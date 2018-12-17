@@ -590,14 +590,14 @@ class Super_model extends CI_Model {
     }
     
     //------ Búsquedas --------
-//    public function buscar_valoracion($fMedia){
-//        $this->db->select('*');
-//        $this->db->from('Juego');
-//        $this->db->where('id', $fMedia);
-//        $consulta = $this->db->get();
-//        
-//        return $consulta->result_array;
-//    }
+    public function buscar_valoracion($fMedia){
+        $this->db->select('*');
+        $this->db->from('Juego');
+        $this->db->where('ValoracionMedia', $fMedia);
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array;
+    }
     
     
         
