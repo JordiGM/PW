@@ -344,7 +344,7 @@ class Super_model extends CI_Model {
     
     //Método que devuelve todas las productoras
     public function get_productora_all (){
-        $this->db->from('Propductora');
+        $this->db->from('Productora');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
@@ -352,7 +352,7 @@ class Super_model extends CI_Model {
     
     //Método que devuelve la información de una productora
     public function get_productora ($iIdProductora){
-        $this->db->from('Propductora');
+        $this->db->from('Productora');
         $this->db->where('id', $iIdProductora);
         $consulta = $this->db->get();
         

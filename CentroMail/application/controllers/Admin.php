@@ -37,24 +37,29 @@ class Admin extends CI_Controller {
            $this->form_validation->set_message('verify_productora_name', 'La productora ya existe');
            
            if($this->form_validation->run() == FALSE){
-               $this->register();
+               $this->RegistroProductora();
            }
            else{
                $this->Super_model->add_productora();
-               $datos = array('mensaje' => 'La productora se ha registrado correctamente');
-               $this->load->view('usuario_view', $datos);
+               $mensaje = array('mensaje' => 'La productora se ha registrado correctamente');
+               $this->load->view('admin/admin_view', $mensaje);
            }
         }
     }
     
     function verify_productora_name($sName){
-        $var = $this->Super_model->verify_user($sName);
+        $var = $this->Super_model->verify_productora($sName);
         if($var == true){
             return false;
         }else{
             return true;
         }
         
+    }
+    
+    public function ActualizacionProductora(){
+        $datos =  array('productoras' => $this->Super_model->get_productora_all());
+        $this->load->view("admin/actualizacion/productora_view", $datos);
     }
     
 }
