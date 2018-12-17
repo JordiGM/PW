@@ -55,15 +55,17 @@ class Buscador extends CI_Controller {
 	}
 	//busqueda y muestra de resultados
 	public function BusquedaJPorNombre(){
+	$data=array();
 		$this->form_validation->set_rules('Nombre','Nombre del Juego','required');
 		$this->form_validation->set_message('required','El campo %s es obligatorio.');
 		if ($this->form_validation->run() ==FALSE){
 			 $this->index();
 		 }else{
-			 $nombre = $this->input->post('nombre');
-			 $this->load->model('Super_model');
-			 $data= $this->super_model->get_juego_title($nombre);
-			 $this->load->view('JuegosEncontrados',$data);
+			 $nombre = $this->input->post('Nombre');
+			 $data= $this->Super_model->get_juego_title($nombre);
+			 
+			 
+			 $this->load->view('JuegosEncontrados_view',$data);
 		}
 	 }
 	 	public function BusquedaJPorEdad(){/*
