@@ -367,7 +367,9 @@ ALTER TABLE `productora`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  UNIQUE KEY `Correo_UNIQUE` (`Correo`),
+  UNIQUE KEY `Nombre_UNIQUE` (`Nombre`);
 
 --
 -- Indices de la tabla `valoracion`
