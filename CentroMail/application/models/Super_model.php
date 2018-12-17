@@ -41,13 +41,13 @@ class Super_model extends CI_Model {
     
     //Metodo que verifica la sesión del usuario
     public function verify_sesion(){
-        $sPass = $this->encrypt->encode(
-                $this->input->post('Contrasennia',TRUE));
+       // $sPass = $this->encrypt->encode(
+         //       $this->input->post('Contrasennia',TRUE));
         
         $consulta = $this->db->get_where('Usuario', array(
             //Utilizamos true para evitar inyecciones xss
             'Nombre'=>$this->input->post('Nombre',TRUE),
-            'Contrasennia'=>$sPass));
+            'Contrasennia'=>$this->input->post('Contrasennia', TRUE)));
         
         if($consulta->num_rows() == 1){ return true;}
         else { return false; }

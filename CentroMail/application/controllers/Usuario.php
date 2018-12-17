@@ -9,7 +9,7 @@
 /**
  * Description of Usuario
  *
- * @author Jordi Güeto Matavera
+ * @author Jordi Güeto Matavera && Pablo Piedad Garrido
  */
 error_reporting(E_ALL ^ E_DEPRECATED);
 
@@ -55,7 +55,7 @@ class Usuario extends CI_Controller {
            else{
                $this->Super_model->add_user();
                $datos = array('mensaje' => 'El usuario se ha registrado correctamente');
-               $this->load->view('registro_view', $datos);
+               $this->load->view('usuario_view', $datos);
            }
         }
     }
@@ -70,13 +70,13 @@ class Usuario extends CI_Controller {
         
     }
    
-   public function verifySession(){
+   public function verify_sesion(){
        if($this->input->post('submit')){
            $bVar = $this->Super_model->verify_sesion();
            if($bVar == true){
                $variables = array('usuario' =>$this->input->post('user'));
                $this->session->set_userdata($variables);
-               redirect(base_url() . 'index.php/CentroMail');
+               redirect(base_url());
            } else{
                $mensaje = array('mensaje' => 'El usuario/contraseña no son correctos');
                $this->load->view('usuario_view', $mensaje);

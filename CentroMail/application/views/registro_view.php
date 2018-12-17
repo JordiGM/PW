@@ -29,6 +29,8 @@ and open the template in the editor.
 
         <?= form_label('Repetir contraseña', 'Repetir contraseña'); ?>
         <?= form_password('Contrasennia2'); ?><br/><br/>
+        
+        <input type="hidden" name="Tipo" value="0"/>
 
         <?= form_submit('submit_reg', 'Registrar'); ?>
 

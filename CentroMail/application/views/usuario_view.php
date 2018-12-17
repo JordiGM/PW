@@ -9,8 +9,8 @@
             <label for="Nombre">Usuario </label>
             <input type="text" name="Nombre"/><br/>
             
-            <label for="contrasennia">Contraseña</label>
-            <input type="password" name="contrasennia"/><br/>
+            <label for="Contrasennia">Contraseña</label>
+            <input type="password" name="Contrasennia"/><br/>
             
             <input type="submit" value="Login" name="submit"/><br/>
             <a href="<?=base_url() . 'index.php/Usuario/register'?>"
