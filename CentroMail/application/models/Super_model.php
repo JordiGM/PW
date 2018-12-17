@@ -53,11 +53,22 @@ class Super_model extends CI_Model {
         else { return false; }
     }
 
+    //Metodo que devuelve todos los usuarios
+    public function get_user_all(){
+        $this->db->from('Usuario');
+        $this->db->select('Nombre, Correo, Annio');
+        $this->db->order_by('Nombre', 'ASC');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
     //Metodo que busca a un usuario por su nombre
     public function get_user_name($sName){
         $this->db->from('Usuario');
         $this->db->select('Correo, Annio');
         $this->db->like('Nombre',$sName, 'both');
+        $this->db->order_by('Nombre', 'ASC');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
@@ -68,6 +79,7 @@ class Super_model extends CI_Model {
         $this->db->from('Usuario');
         $this->db->select('Nombre, Annio');
         $this->db->like('Correo',$sMail, 'both');
+        $this->db->order_by('Nombre', 'ASC');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
@@ -86,8 +98,9 @@ class Super_model extends CI_Model {
     //Metdodo que devuelve el id de usuario
     public function get_id_user($sName){
         $this->db->from('Usuario');
-        $this->db->select('id');
+        $this->db->select('id, Nombre');
         $this->db->like('Nombre',$sName, 'none');
+        $this->db->order_by('Nombre', 'ASC');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
@@ -154,6 +167,14 @@ class Super_model extends CI_Model {
      *          Metodos de CalificacionesEdad
      */
     
+    //Método que devuelve todas las calificaciones
+    public function get_ageCalification_all (){
+        $this->db->from('CalificacionEdad');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
     //Método que devuelve la calificación por edad de un juego
     public function get_ageCalification ($iIdAgeCali){
         $this->db->from('CalificacionEdad');
@@ -206,6 +227,14 @@ class Super_model extends CI_Model {
     /**
      *          Metodos de CalificacionesContenido
      */
+    
+    //Método que devuelve todas las calificaciones
+    public function get_contentCalification_all (){
+        $this->db->from('CalificacionContenido');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
     
     //Método que devuelve la calificación por contenido de un juego
     public function get_contentCalification ($iIdContentCali){
@@ -260,6 +289,14 @@ class Super_model extends CI_Model {
      *          Metodos de Genero
      */
     
+    //Método que devuelve todos los generos
+    public function get_genero_all (){
+        $this->db->from('Genero');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
     //Método que devuelve la información de un genero
     public function get_genero ($iIdGenero){
         $this->db->from('Genero');
@@ -304,6 +341,14 @@ class Super_model extends CI_Model {
     /**
      *          Metodos de Productora
      */
+    
+    //Método que devuelve todas las productoras
+    public function get_productora_all (){
+        $this->db->from('Propductora');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
     
     //Método que devuelve la información de una productora
     public function get_productora ($iIdProductora){
@@ -353,6 +398,14 @@ class Super_model extends CI_Model {
      *          Metodos de Compannia
      */
     
+     //Método que devuelve todas las compañias
+    public function get_compannia_all (){
+        $this->db->from('Compannia');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
     //Método que devuelve la información de una compañia
     public function get_compannia ($iIdCompannia){
         $this->db->from('Compannia');
@@ -389,6 +442,14 @@ class Super_model extends CI_Model {
     /**
      *          Metodos de Plataforma
      */
+    
+    //Método que devuelve todas las plataformas
+    public function get_plataform_all (){
+        $this->db->from('Plataforma');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
     
     //Método que devuelve la información de una plataforma
     public function get_plataform ($iIdPlataform){
@@ -427,10 +488,20 @@ class Super_model extends CI_Model {
      *          Metodos de Juego
      */
     
+    //Método que devuelve todos los juegos
+    public function get_juego_title_all (){
+        $this->db->from('Juego');
+        $this->db->order_by('Titulo', 'ASC');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
     //Método que devuelve la información de un juego
     public function get_juego_title ($sName){
         $this->db->from('Juego');
         $this->db->like('Titulo', $sName, 'none');
+        $this->db->order_by('Titulo', 'ASC');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
@@ -614,6 +685,7 @@ class Super_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('Juego');
         $this->db->where('ValoracionMedia', $fMedia);
+        $this->db->order_by('Titulo', 'ASC');
         $consulta = $this->db->get();
         
         return $consulta->result_array;
@@ -625,6 +697,14 @@ class Super_model extends CI_Model {
     /**
      *          Metodos de Nick
      */
+    
+    //Método que devuelve todos los nicks
+    public function get_nick_all (){
+        $this->db->from('Nick');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
     
     //Método que devuelve la información de un Nick
     public function get_nick ($iIdJuego, $iIdUsuario){
@@ -662,6 +742,7 @@ class Super_model extends CI_Model {
         $this->db->select('Nick, Usuario_id');
         $this->db->from('Nick');
         $this->db->where('Juego_id', $iIdJuego);
+        $this->db->order_by('Nick', 'ASC');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
@@ -672,6 +753,7 @@ class Super_model extends CI_Model {
         $this->db->select('Nick, Juego_id');
         $this->db->from('Nick');
         $this->db->where('Usuario_id', $iIdUsuario);
+        $this->db->order_by('Nick', 'ASC');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
@@ -683,6 +765,7 @@ class Super_model extends CI_Model {
         $this->db->select('Usuario_id, Juego_id');
         $this->db->from('Nick');
         $this->db->like('Nick', $sNick, 'both');
+        $this->db->order_by('Nick', 'ASC');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
@@ -709,6 +792,16 @@ class Super_model extends CI_Model {
      *          Metodos de Valoración
      */
     
+    //Método que devuelve todas las valoraciones
+    public function get_valoracion_all (){
+        $this->db->from('Valoracion');
+        $this->db->order_by('Fecha', 'ASC');
+        $this->db->order_by('Hora', 'ASC');
+        $consulta = $this->db->get();
+        
+        return $consulta->result_array();
+    }
+    
     //Método que devuelve la información de una valoración
     public function get_valoracion ($iIdJuego, $iIdUsuario){
         $this->db->from('Valoracion');
@@ -725,6 +818,8 @@ class Super_model extends CI_Model {
             //Utilizamos true para evitar inyecciones xss
             'Puntuacion'=>$this->input->post('Puntuacion',TRUE),
             'Comentario'=>$this->input->post('Comentario',TRUE),
+            'Fecha'=>$this->input->post('Fecha',TRUE),
+            'Hora'=>$this->input->post('Hora',TRUE),
             'Usuario_id'=>$this->input->post('Usuario',TRUE),
             'Juego_id'=>$this->input->post('Juego',TRUE)
         ));
@@ -756,6 +851,8 @@ class Super_model extends CI_Model {
         $this->db->select('Puntuacion, Comentario, Usuario_id');
         $this->db->from('Valoracion');
         $this->db->where('Juego_id', $iIdJuego);
+        $this->db->order_by('Fecha', 'ASC');
+        $this->db->order_by('Hora', 'ASC');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
@@ -766,6 +863,8 @@ class Super_model extends CI_Model {
         $this->db->select('Puntuacion, Comentario, Juego_id');
         $this->db->from('Valoracion');
         $this->db->where('Usuario_id', $iIdUsuario);
+        $this->db->order_by('Fecha', 'ASC');
+        $this->db->order_by('Hora', 'ASC');
         $consulta = $this->db->get();
         
         return $consulta->result_array();
