@@ -9,7 +9,7 @@
 /**
  * Description of Usuario
  *
- * @author Jordi Güeto Matavera && Pablo Piedad Garrido
+ * @author Jordi Güeto Matavera
  */
 error_reporting(E_ALL ^ E_DEPRECATED);
 

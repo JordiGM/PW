@@ -1,10 +1,9 @@
-<?php
-/**
- * @author Pablo Piedad Garrido
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html lang="es">
 <head>
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>CSS/estilosCSS.css">
@@ -17,7 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <ul>
                     <li><a href="<?=base_url().'index.php/Welcome/'?>" title="Inicio">Inicio</a></li>
                     <li><a href="<?=base_url().'index.php/Buscador/'?>">Buscar</a></li>
-                    <li style="float:right"><a href="<?=base_url().'index.php/Usuario/'?>">Login</a></li>
+                    <li style="float:right"><a href="<?=base_url().'index.php/Usuario/mostrarDatos/'?>">Mostrar</a></li>
+                    <li style="float:right"><a href="<?=base_url().'index.php/Usuario/logout/'?>">Logout</a></li>
                 </ul>
 
                 <p>Bienvenido a la web de CentroMail.<br><br>
@@ -31,3 +31,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </body>
 </html>
+

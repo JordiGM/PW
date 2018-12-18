@@ -19,9 +19,9 @@
     <br>
     
     <h2><?php echo "Descripcion: <tab>"?></h2>
-    <p> <?php echo "$data['Descripcion']" ?></p><br>
+    <p> <?php echo $data['Descripcion'] ?></p><br>
     <h2><?php echo "Valoracion: "?></h2>
-    <p> <?php echo "$data['Valoracion']" ?></p><br>
+    <p> <?php echo $data['Valoracion'] ?></p><br>
     <?php foreach ($comentario as $fila):?>
     
     <?php echo $fila['Comentario'] ?>

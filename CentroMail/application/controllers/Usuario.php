@@ -27,6 +27,14 @@ class Usuario extends CI_Controller {
    public function register(){
        $this->load->view("registro_view");
    }
+   public function logout(){
+       redirect(base_url());
+   }
+   public function mostrarDatos(){
+       $id = $this->db->insert_id();
+       $data = $this->Super_model->get_user($id);
+       $this->load->view("mostrarUser_view", compact($data));
+   }
    
    public function verifyRegister(){
        if($this->input->post('submit_reg')){
@@ -76,7 +84,7 @@ class Usuario extends CI_Controller {
            if($bVar == true){
                $variables = array('usuario' =>$this->input->post('user'));
                $this->session->set_userdata($variables);
-               redirect(base_url());
+               redirect(base_url() . 'index.php/Welcome/log');
            } else{
                $mensaje = array('mensaje' => 'El usuario/contraseña no son correctos');
                $this->load->view('usuario_view', $mensaje);
