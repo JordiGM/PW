@@ -11,7 +11,8 @@
             <h1>¡Bienvenido al panel de aministración!</h1>
             <p>
                  <a href="<?= base_url().'index.php/Admin/RegistroProductora'?>" title="RegistroProductora">Registro Productora</a>
-                 <a href="<?= base_url().'index.php/Admin/ActualizacionProductora'?>" title="ActualizacionProductora">Actualizacion Productora</a>
+                 <a href="<?= base_url().'index.php/Admin/MostrarProductoras/0'?>" title="ActualizacionProductora">Actualizacion Productora</a>
+                 <a href="<?= base_url().'index.php/Admin/MostrarProductoras/1'?>" title="EliminarProductora">Eliminar Productora</a>
             </p>
             <hr/>
             <?php if (isset($mensaje)): ?>

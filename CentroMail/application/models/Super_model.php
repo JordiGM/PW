@@ -883,4 +883,16 @@ class Super_model extends CI_Model {
         $this->db->where('id', $iId);
         $this->db->delete('Valoracion');
     }
+    
+    
+    
+    //------- FUNCIONES ELIMINACION -------
+    //Método que devuelve si algun juego esta relacionado con esa productora
+    public function get_juego_productora ($iIdProductora){
+        $this->db->from('Juego');
+        $this->db->where('Productora_id', $iIdProductora);
+        $consulta = $this->db->get();
+        
+        return $consulta->num_rows();
+    }
 }
