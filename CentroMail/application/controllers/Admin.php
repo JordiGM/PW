@@ -28,7 +28,7 @@ class Admin extends CI_Controller {
         $this->load->view("admin/registro/productora_view");
     }
     
-    public function verifyRegisterProductora(){
+    public function verifyRegisterProductora($id){
        if($this->input->post('submit_reg')){
            $this->form_validation->set_rules('Nombre', 'Nombre', 'required|callback_verify_productora_name|max_length[64]');
            
@@ -40,8 +40,13 @@ class Admin extends CI_Controller {
                $this->RegistroProductora();
            }
            else{
-               $this->Super_model->add_productora();
-               $mensaje = array('mensaje' => 'La productora se ha registrado correctamente');
+               if($id != 0){
+                   $this->Super_model->set_name_productora($id,$this->input->post('Nombre',TRUE));
+                   $mensaje = array('mensaje' => 'La productora se ha actualizado correctamente');
+               }else{
+                   $this->Super_model->add_productora();
+                   $mensaje = array('mensaje' => 'La productora se ha registrado correctamente');
+               }
                $this->load->view('admin/admin_view', $mensaje);
            }
         }
