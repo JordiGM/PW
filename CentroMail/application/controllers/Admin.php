@@ -62,4 +62,8 @@ class Admin extends CI_Controller {
         $this->load->view("admin/actualizacion/productora_view", $datos);
     }
     
+    public function formActualizacionProductora($id){
+        $data = array("productora" => $this->Super_model->get_productora($id));
+        $this->load->view("admin/actualizacion/formProductora_view", $data);
+    }
 }
