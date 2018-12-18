@@ -1,8 +1,8 @@
 <?php
-   
-    echo $data['Nombre'] . "<br>";
-    echo $data['Correo'] . "<br>";
-    echo $data['Annio'] . "<br>";
+    echo $usuarios[0]['Nombre'] . "<br>";
+    echo $usuarios[0]['Correo'] . "<br>";
+    echo $usuarios[0]['Annio'] . "<br>";
+    
 
 ?>
 

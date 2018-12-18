@@ -30,10 +30,10 @@ class Usuario extends CI_Controller {
    public function logout(){
        redirect(base_url());
    }
-   public function mostrarDatos(){
-       $id = $this->db->insert_id();
-       $data = $this->Super_model->get_user($id);
-       $this->load->view("mostrarUser_view", compact($data));
+   
+   public function mostrarDatos($id){
+       $data = array('usuarios' => $this->Super_model->get_user($id));
+       $this->load->view("mostrarUser_view", $data);
    }
    
    public function verifyRegister(){
@@ -62,7 +62,7 @@ class Usuario extends CI_Controller {
            }
            else{
                $this->Super_model->add_user();
-               $datos = array('mensaje' => 'El usuario se ha registrado correctamente');
+               $datos = array('mensaje' => 'El usuario se ha registrado correctamente', 'id' => $this->db->insert_id());
                $this->load->view('usuario_view', $datos);
            }
         }
@@ -82,7 +82,7 @@ class Usuario extends CI_Controller {
        if($this->input->post('submit')){
            $bVar = $this->Super_model->verify_sesion();
            if($bVar == true){
-               $variables = array('usuario' =>$this->input->post('user'));
+               $variables = array('usuario' =>$this->input->post('Nombre'));
                $this->session->set_userdata($variables);
                redirect(base_url() . 'index.php/Welcome/log');
            } else{

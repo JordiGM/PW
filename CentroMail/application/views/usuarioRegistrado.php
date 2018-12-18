@@ -8,15 +8,14 @@ and open the template in the editor.
 <head>
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>CSS/estilosCSS.css">
     <meta charset="utf-8">
-    <title>CentroMail</title>
+    <title> <?= 'Pagina principal de '.$usuario['Nombre'] ?> </title>
 </head>
     <body>
         <div align="center" id="container">
             <div id="body">
                 <ul>
-                    <li><a href="<?=base_url().'index.php/Welcome/'?>" title="Inicio">Inicio</a></li>
+                    <li><a href="<?=base_url().'index.php/Welcome/log'?>" title="Inicio">Inicio</a></li>
                     <li><a href="<?=base_url().'index.php/Buscador/'?>">Buscar</a></li>
-                    <li style="float:right"><a href="<?=base_url().'index.php/Usuario/mostrarDatos/'?>">Mostrar</a></li>
                     <li style="float:right"><a href="<?=base_url().'index.php/Usuario/logout/'?>">Logout</a></li>
                 </ul>
 
@@ -24,9 +23,11 @@ and open the template in the editor.
                     En ella encontrará valoraciones de videojuegos y comentarios de los usuarios
                 </p>
                 <center>
-                    <h2>VIDEOJUEGOS MÁS VALORADOS SEGÚN NUESTROS USUARIOS</h2>
+                    <h2>LISTA DE VIDEOJUEGOS POSIBLES PARA COMPRAR</h2>
                 </center>
-                <!--//Aqui iria una vista a videojuegos cuya valoración va de mayor a menor-->
+                <?php 
+                $this->load->view('PaginaJ_view');
+                ?>
             </div>	
         </div>
     </body>

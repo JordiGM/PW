@@ -5,8 +5,6 @@
 </head>
 <body>
 
-
-
  <?= form_open(base_url().'index.php/Buscador/BusquedaJPorNombre',
  array('name'=>'mi_form','id'=>'form'));?>
  <?= form_label('Nombre','Nombre',array('class'=>'label')); ?>
