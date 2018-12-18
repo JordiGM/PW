@@ -11,10 +11,9 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Registrar productora</h1>
-        <?= form_open(base_url() . 'index.php/Admin/verifyRegisterProductora', array('name' => 'form_reg')); ?>
+        <?= form_open(base_url() . 'index.php/Admin/verifyRegisterProductora/0', array('name' => 'form_reg')); ?>
         <?= form_label('Nombre', 'Nombre'); ?>
         <?= form_input('Nombre', @set_value('Nombre')) ?><br/><br/>
-
         <?= form_submit('submit_reg', 'Registrar'); ?>
 
         <a href="<?= base_url() . 'index.php/Admin/' ?>" title="PanelAdmin">Panel de Administración</a>
