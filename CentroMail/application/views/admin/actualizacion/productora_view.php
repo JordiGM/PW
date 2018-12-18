@@ -12,7 +12,7 @@ and open the template in the editor.
     <body>
         <h1>Actualiza productora</h1>
         <?php foreach ($productoras as $fila):?>
-        <?php echo $fila['Nombre']."<br>" ?>
+        <a href="<?= base_url()."index.php/Admin/formActualizacionProductora/".$fila['id'] ?>"><?php echo $fila['Nombre'] ?></a><br>
         <?php endforeach; ?>
         <hr/>
         <a href="<?= base_url() . 'index.php/Admin/' ?>" title="PanelAdmin">Panel de Administración</a>
