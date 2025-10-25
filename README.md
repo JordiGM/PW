@@ -29,3 +29,44 @@ El proyecto fue construido utilizando un stack tecnológico fundamental para el 
 ## 📂 Estructura del Repositorio
 
 La organización del código sigue una estructura lógica para un proyecto de Programación Web. La carpeta principal es la que contiene la totalidad de la aplicación:
+PW-UCA/ ├── CentroMail/ # Carpeta principal del proyecto │ ├── index.html # Punto de entrada de la aplicación │ ├── ...otros-archivos...# Archivos HTML, PHP, CSS y JS │ └── ... └── README.md
+
+
+---
+
+## 🛠️ Instalación y Uso
+
+Para desplegar y ejecutar este proyecto localmente, sigue los siguientes pasos. Dado que utiliza PHP, es necesario un entorno de servidor.
+
+### Requisitos
+
+Necesitarás un servidor web local que soporte PHP (por ejemplo, **XAMPP, WAMP, MAMP, o Docker**).
+
+### Pasos
+
+1.  **Clonar el Repositorio:**
+    ```bash
+    git clone [https://github.com/sheratanAlde/PW-UCA.git](https://github.com/sheratanAlde/PW-UCA.git)
+    ```
+
+2.  **Configurar el Servidor:**
+    * Copia la carpeta `PW-UCA` al directorio raíz de tu servidor web (e.g., `htdocs` en XAMPP o `www` en WAMP).
+
+3.  **Ejecutar la Aplicación:**
+    * Asegúrate de que el módulo **Apache** (o equivalente) y **PHP** estén activos en tu servidor.
+    * Abre tu navegador y accede a la URL:
+        ```
+        http://localhost/PW-UCA/CentroMail/
+        ```
+    *(Asegúrate de que el puerto por defecto de tu servidor sea el 80, o ajusta la URL si es necesario.)*
+
+---
+
+## 🧑‍💻 Autor
+
+Este proyecto fue desarrollado por:
+
+* **[sheratanAlde](https://github.com/sheratanAlde)**
+* **[PabloP95](https://github.com/PabloP95)**
+
+---
