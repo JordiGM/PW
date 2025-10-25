@@ -1,8 +1,11 @@
 # 💻 PW-GII-ESI-UCA: Proyecto de Programación Web
 
 [![Universidad de Cádiz](https://img.shields.io/badge/Universidad%20de%20C%C3%A1diz-UCA-blue.svg)](https://www.uca.es/)
+[![Grado](https://img.shields.io/badge/Grado-Ingenier%C3%ADa%20Inform%C3%A1tica%20(GII)-yellowgreen.svg)](#)
 [![Curso Académico](https://img.shields.io/badge/Curso-2018%2F2019-red.svg)](#)
+[![Asignatura](https://img.shields.io/badge/Asignatura-Programaci%C3%B3n%20Web%20(PW)-red.svg)](#)
 [![Lenguajes Principales](https://img.shields.io/badge/Lenguajes-HTML%20%7C%20PHP-orange.svg)](#tecnolog%C3%ADas-utilizadas)
+[![Estado](https://img.shields.io/badge/Estado-Archivado-lightgrey.svg)](#)
 
 ---
 
@@ -62,9 +65,9 @@ Necesitarás un servidor web local que soporte PHP (por ejemplo, **XAMPP, WAMP, 
 
 ---
 
-## 🧑‍💻 Autor
+## 🤝 Colaboradores
 
-Este proyecto fue desarrollado por:
+Este proyecto fue desarrollado en colaboración por:
 
 * **[sheratanAlde](https://github.com/sheratanAlde)**
 * **[PabloP95](https://github.com/PabloP95)**
